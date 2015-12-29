@@ -4,44 +4,36 @@ class Calculator
 {
     protected $result = 0;
 
-    public function add()
+    protected $operands = [];
+
+    protected $operation;
+
+    public function setOperands()
     {
-        $this->calculateAll(func_get_args(), '+');
+        $this->operands = func_get_args();
     }
 
-    public function subtract()
+    public function setOperation(Operation $operation)
     {
-        $this->calculateAll(func_get_args(), '-');
+        $this->operation = $operation;
+    }
+
+    public function calculate()
+    {
+        foreach ($this->operands as $num) {
+
+            if (!is_numeric($num)) {
+                throw new InvalidArgumentException;
+            }
+
+            $this->result = $this->operation->run($num, $this->result);
+        }
+
+        return $this->result;
     }
 
     public function getResult()
     {
         return $this->result;
-    }
-
-    protected function calculateAll(array $nums, $symbol)
-    {
-        foreach ($nums as $num) {
-
-            $this->calculate($num, $symbol);
-
-        }
-    }
-
-    protected function calculate($num, $symbol)
-    {
-        if (!is_numeric($num)) {
-            throw new InvalidArgumentException;
-        }
-
-        switch ($symbol) {
-            case '+':
-                $this->result += $num;
-                break;
-
-            case '-':
-                $this->result -= $num;
-                break;
-        }
     }
 }

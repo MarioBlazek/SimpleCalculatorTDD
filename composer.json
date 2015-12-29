@@ -4,7 +4,10 @@
   },
   "autoload": {
     "classmap": [
-      "Calculator.php"
+      "Calculator.php",
+      "Addition.php",
+      "Subtraction.php",
+      "Operation.php"
     ]
   }
 }
