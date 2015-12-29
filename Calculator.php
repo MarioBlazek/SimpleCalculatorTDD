@@ -6,30 +6,42 @@ class Calculator
 
     public function add()
     {
-        foreach(func_get_args() as $num) {
-
-            if (!is_numeric($num)) {
-                throw new InvalidArgumentException;
-            }
-
-            $this->result += $num;
-        }
+        $this->calculateAll(func_get_args(), '+');
     }
 
     public function subtract()
     {
-        foreach (func_get_args() as $num) {
-
-            if (!is_numeric($num)) {
-                throw new InvalidArgumentException;
-            }
-
-            $this->result -= $num;
-        }
+        $this->calculateAll(func_get_args(), '-');
     }
 
     public function getResult()
     {
         return $this->result;
+    }
+
+    protected function calculateAll(array $nums, $symbol)
+    {
+        foreach ($nums as $num) {
+
+            $this->calculate($num, $symbol);
+
+        }
+    }
+
+    protected function calculate($num, $symbol)
+    {
+        if (!is_numeric($num)) {
+            throw new InvalidArgumentException;
+        }
+
+        switch ($symbol) {
+            case '+':
+                $this->result += $num;
+                break;
+
+            case '-':
+                $this->result -= $num;
+                break;
+        }
     }
 }
