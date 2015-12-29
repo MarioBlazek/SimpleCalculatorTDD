@@ -4,13 +4,28 @@ class Calculator
 {
     protected $result = 0;
 
-    public function add($num)
+    public function add()
     {
-        if (!is_numeric($num)) {
-            throw new InvalidArgumentException;
-        }
+        foreach(func_get_args() as $num) {
 
-        $this->result += $num;
+            if (!is_numeric($num)) {
+                throw new InvalidArgumentException;
+            }
+
+            $this->result += $num;
+        }
+    }
+
+    public function subtract()
+    {
+        foreach (func_get_args() as $num) {
+
+            if (!is_numeric($num)) {
+                throw new InvalidArgumentException;
+            }
+
+            $this->result -= $num;
+        }
     }
 
     public function getResult()
