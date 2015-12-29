@@ -12,9 +12,9 @@ class CalculatorTest extends PHPUnit_Framework_TestCase
         new Calculator();
     }
 
-    public function testResultDefaultsToZero()
+    public function testResultDefaultsToNull()
     {
-        $this->assertSame(0, $this->calc->getResult());
+        $this->assertSame(null, $this->calc->getResult());
     }
 
     public function testAddsNumbers()
@@ -54,5 +54,14 @@ class CalculatorTest extends PHPUnit_Framework_TestCase
         $result = $this->calc->calculate();
 
         $this->assertEquals(-4, $result);
+    }
+
+    public function testMultipliesNumber()
+    {
+        $this->calc->setOperands(2, 3, 5);
+        $this->calc->setOperation(new Multiplication);
+
+        $result = $this->calc->calculate();
+        $this->assertEquals(30, $result);
     }
 }

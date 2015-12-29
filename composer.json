@@ -7,7 +7,8 @@
       "Calculator.php",
       "Addition.php",
       "Subtraction.php",
-      "Operation.php"
+      "Operation.php",
+      "Multiplication.php"
     ]
   }
 }

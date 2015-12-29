@@ -2,7 +2,7 @@
 
 class Calculator
 {
-    protected $result = 0;
+    protected $result = null;
 
     protected $operands = [];
 
