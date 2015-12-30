@@ -17,6 +17,29 @@ class CalculatorTest extends PHPUnit_Framework_TestCase
         $this->assertSame(null, $this->calc->getResult());
     }
 
+    public function testAddsNumbersMocked()
+    {
+        // Mock all outside objects
+        // We are not interested in testing those
+        // They should have their own tests
+        $mock = Mockery::mock('Addition');
+
+        // All we care about is verifying that
+        // the proper method was called
+        $mock->shouldReceive('run')
+            ->once()
+            ->with(5, 0)
+            ->andReturn(5);
+
+        $this->calc->setOperands(5);
+
+        // Rather than new Addition, we pass
+        // in the mock object
+        $this->calc->setOperation($mock);
+        $result = $this->calc->calculate();
+        $this->assertEquals(5, $result);
+    }
+
     public function testAddsNumbers()
     {
         $this->calc->setOperands(5);
