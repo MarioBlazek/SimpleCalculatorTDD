@@ -1,4 +1,7 @@
 <?php
+declare(strict_types=1);
+
+namespace Marek\Calculator;
 
 class Multiplication implements Operation
 {

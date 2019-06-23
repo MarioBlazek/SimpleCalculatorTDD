@@ -1,15 +1,40 @@
 {
-  "require-dev": {
-    "phpunit/phpunit": "5.1.*",
-    "mockery/mockery": "0.9.4"
-  },
-  "autoload": {
-    "classmap": [
-      "Calculator.php",
-      "Addition.php",
-      "Subtraction.php",
-      "Operation.php",
-      "Multiplication.php"
-    ]
-  }
+    "name": "marioblazek/calculator-tdd",
+    "description": "Simple Calculator developed using TDD",
+    "type": "library",
+    "keywords": [
+        "calculator",
+        "tdd"
+    ],
+    "homepage": "https://github.com/MarioBlazek/SimpleCalculatorTDD",
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Mario Blažek",
+            "homepage": "https://marioblazek.dev"
+        }
+    ],
+    "require": {
+        "php": "^7.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~8.0",
+        "mockery/mockery": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Marek\\Calculator\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Marek\\Calculator\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "@php vendor/bin/phpunit -c phpunit.xml --colors=always"
+    }
 }

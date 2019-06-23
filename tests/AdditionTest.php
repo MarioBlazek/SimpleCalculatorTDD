@@ -1,6 +1,12 @@
 <?php
+declare(strict_types=1);
 
-class AdditionTest extends PHPUnit_Framework_TestCase
+namespace Marek\Calculator\Tests;
+
+use Marek\Calculator\Addition;
+use PHPUnit\Framework\TestCase;
+
+class AdditionTest extends TestCase
 {
     public function testFindsTheSumOfNumbers()
     {

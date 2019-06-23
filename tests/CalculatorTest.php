@@ -1,15 +1,26 @@
 <?php
+declare(strict_types=1);
 
-class CalculatorTest extends PHPUnit_Framework_TestCase
+namespace Marek\Calculator\Tests;
+
+use InvalidArgumentException;
+use Marek\Calculator\Addition;
+use Marek\Calculator\Calculator;
+use Marek\Calculator\Multiplication;
+use Marek\Calculator\Subtraction;
+use Mockery;
+use PHPUnit\Framework\TestCase;
+
+class CalculatorTest extends TestCase
 {
-    public function setUp()
+    /**
+     * @var \Marek\Calculator\Calculator
+     */
+    protected $calc;
+
+    public function setUp(): void
     {
         $this->calc = new Calculator();
-    }
-
-    public function testInstance()
-    {
-        new Calculator();
     }
 
     public function testResultDefaultsToNull()
@@ -22,7 +33,7 @@ class CalculatorTest extends PHPUnit_Framework_TestCase
         // Mock all outside objects
         // We are not interested in testing those
         // They should have their own tests
-        $mock = Mockery::mock('Addition');
+        $mock = Mockery::mock(Addition::class);
 
         // All we care about is verifying that
         // the proper method was called
@@ -49,11 +60,9 @@ class CalculatorTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(5, $result);
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testRequiresNumericValue()
     {
+        $this->expectException(InvalidArgumentException::class);
         $this->calc->setOperands('five');
         $this->calc->setOperation(new Addition());
 
