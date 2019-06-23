@@ -18,9 +18,7 @@ class Multiplication implements Operation
         // If this is first calculation,
         // then return the only operand
         if (is_null($current)) {
-
             return $num;
-
         }
 
         return $current * $num;

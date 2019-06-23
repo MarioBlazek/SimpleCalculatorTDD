@@ -26,7 +26,6 @@ class Calculator
     public function calculate()
     {
         foreach ($this->operands as $num) {
-
             if (!is_numeric($num)) {
                 throw new InvalidArgumentException;
             }
