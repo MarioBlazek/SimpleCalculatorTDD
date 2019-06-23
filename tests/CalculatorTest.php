@@ -8,7 +8,6 @@ use Marek\Calculator\Addition;
 use Marek\Calculator\Calculator;
 use Marek\Calculator\Multiplication;
 use Marek\Calculator\Subtraction;
-use Mockery;
 use PHPUnit\Framework\TestCase;
 
 class CalculatorTest extends TestCase
@@ -33,14 +32,12 @@ class CalculatorTest extends TestCase
         // Mock all outside objects
         // We are not interested in testing those
         // They should have their own tests
-        $mock = Mockery::mock(Addition::class);
+        $mock = $this->createMock(Addition::class);
 
-        // All we care about is verifying that
-        // the proper method was called
-        $mock->shouldReceive('run')
-            ->once()
+        $mock->expects($this->once())
+            ->method('run')
             ->with(5, 0)
-            ->andReturn(5);
+            ->willReturn(5);
 
         $this->calc->setOperands(5);
 
