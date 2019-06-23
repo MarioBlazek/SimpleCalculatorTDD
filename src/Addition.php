@@ -13,7 +13,7 @@ class Addition implements Operation
      *
      * @return integer
      */
-    public function run($num, $current)
+    public function run(int $num, int $current): int
     {
         return $current + $num;
     }

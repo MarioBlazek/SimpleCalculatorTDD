@@ -13,5 +13,5 @@ interface Operation
      *
      * @return integer
      */
-    public function run($num, $current);
+    public function run(int $num, int $current): int;
 }

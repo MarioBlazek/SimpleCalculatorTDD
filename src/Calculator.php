@@ -7,23 +7,32 @@ use InvalidArgumentException;
 
 class Calculator
 {
-    protected $result = null;
+    /**
+     * @var int
+     */
+    protected $result = 0;
 
+    /**
+     * @var array
+     */
     protected $operands = [];
 
+    /**
+     * @var \Marek\Calculator\Operation
+     */
     protected $operation;
 
-    public function setOperands()
+    public function setOperands(): void
     {
         $this->operands = func_get_args();
     }
 
-    public function setOperation(Operation $operation)
+    public function setOperation(Operation $operation): void
     {
         $this->operation = $operation;
     }
 
-    public function calculate()
+    public function calculate(): int
     {
         foreach ($this->operands as $num) {
             if (!is_numeric($num)) {
@@ -36,7 +45,7 @@ class Calculator
         return $this->result;
     }
 
-    public function getResult()
+    public function getResult(): int
     {
         return $this->result;
     }

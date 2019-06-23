@@ -13,11 +13,11 @@ class Multiplication implements Operation
      *
      * @return integer
      */
-    public function run($num, $current)
+    public function run(int $num, int $current): int
     {
         // If this is first calculation,
         // then return the only operand
-        if (is_null($current)) {
+        if (empty($current)) {
             return $num;
         }
 

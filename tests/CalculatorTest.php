@@ -22,9 +22,9 @@ class CalculatorTest extends TestCase
         $this->calc = new Calculator();
     }
 
-    public function testResultDefaultsToNull()
+    public function testResultDefaultsToZero()
     {
-        $this->assertSame(null, $this->calc->getResult());
+        $this->assertSame(0, $this->calc->getResult());
     }
 
     public function testAddsNumbersMocked()
@@ -88,7 +88,7 @@ class CalculatorTest extends TestCase
     public function testMultipliesNumber()
     {
         $this->calc->setOperands(2, 3, 5);
-        $this->calc->setOperation(new Multiplication);
+        $this->calc->setOperation(new Multiplication());
 
         $result = $this->calc->calculate();
         $this->assertEquals(30, $result);
