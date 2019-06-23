@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Marek\Calculator;
@@ -36,7 +37,7 @@ class Calculator
     {
         foreach ($this->operands as $num) {
             if (!is_numeric($num)) {
-                throw new InvalidArgumentException;
+                throw new InvalidArgumentException();
             }
 
             $this->result = $this->operation->run($num, $this->result);

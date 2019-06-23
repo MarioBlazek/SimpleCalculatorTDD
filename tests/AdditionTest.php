@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Marek\Calculator\Tests;
@@ -13,6 +14,6 @@ class AdditionTest extends TestCase
         $addition = new Addition();
         $sum = $addition->run(5, 0);
 
-        $this->assertEquals(5, $sum);
+        self::assertSame(5, $sum);
     }
 }

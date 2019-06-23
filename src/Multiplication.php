@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Marek\Calculator;
@@ -6,12 +7,12 @@ namespace Marek\Calculator;
 class Multiplication implements Operation
 {
     /**
-     * Perform the arithmetic
+     * Perform the arithmetic.
      *
-     * @param integer $num
-     * @param integer $current
+     * @param int $num
+     * @param int $current
      *
-     * @return integer
+     * @return int
      */
     public function run(int $num, int $current): int
     {

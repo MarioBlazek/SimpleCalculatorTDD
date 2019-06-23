@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Marek\Calculator\Tests;
@@ -17,14 +18,14 @@ class CalculatorTest extends TestCase
      */
     protected $calc;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->calc = new Calculator();
     }
 
     public function testResultDefaultsToZero()
     {
-        $this->assertSame(0, $this->calc->getResult());
+        self::assertSame(0, $this->calc->getResult());
     }
 
     public function testAddsNumbersMocked()
@@ -34,7 +35,7 @@ class CalculatorTest extends TestCase
         // They should have their own tests
         $mock = $this->createMock(Addition::class);
 
-        $mock->expects($this->once())
+        $mock->expects(self::once())
             ->method('run')
             ->with(5, 0)
             ->willReturn(5);
@@ -45,7 +46,7 @@ class CalculatorTest extends TestCase
         // in the mock object
         $this->calc->setOperation($mock);
         $result = $this->calc->calculate();
-        $this->assertEquals(5, $result);
+        self::assertSame(5, $result);
     }
 
     public function testAddsNumbers()
@@ -54,7 +55,7 @@ class CalculatorTest extends TestCase
         $this->calc->setOperation(new Addition());
 
         $result = $this->calc->calculate();
-        $this->assertEquals(5, $result);
+        self::assertSame(5, $result);
     }
 
     public function testRequiresNumericValue()
@@ -72,7 +73,7 @@ class CalculatorTest extends TestCase
         $this->calc->setOperation(new Addition());
 
         $result = $this->calc->calculate();
-        $this->assertEquals(10, $result);
+        self::assertSame(10, $result);
     }
 
     public function testSubtractNumbers()
@@ -82,7 +83,7 @@ class CalculatorTest extends TestCase
 
         $result = $this->calc->calculate();
 
-        $this->assertEquals(-4, $result);
+        self::assertSame(-4, $result);
     }
 
     public function testMultipliesNumber()
@@ -91,6 +92,6 @@ class CalculatorTest extends TestCase
         $this->calc->setOperation(new Multiplication());
 
         $result = $this->calc->calculate();
-        $this->assertEquals(30, $result);
+        self::assertSame(30, $result);
     }
 }
