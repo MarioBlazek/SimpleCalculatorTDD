@@ -36,7 +36,7 @@
     },
     "scripts": {
         "fix": "php-cs-fixer fix",
-        "test": "@php vendor/bin/phpunit -c phpunit.xml --colors=always",
+        "test": "@php bin/phpunit -c phpunit.xml --colors=always",
         "coverage": "@php -dzend_extension=xdebug.so vendor/bin/phpunit -c phpunit.xml --colors=always --coverage-html coverage"
     }
 }
